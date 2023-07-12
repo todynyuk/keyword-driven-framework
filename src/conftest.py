@@ -9,7 +9,11 @@ def setup():
     base_path = os.path.dirname(os.path.realpath(__file__))
     workbook = xlrd.open_workbook(
         f"{base_path}/tests/resources/web_sheet.xls")
-    sheet = workbook.sheet_by_name("Sheet5")
+    # sheet = workbook.sheet_by_name("Sheet7")
+    # sheet = workbook.sheet_by_name("Sheet8")
+    # sheet = workbook.sheet_by_name("Sheet9")
+    # sheet = workbook.sheet_by_name("Sheet10")
+    sheet = workbook.sheet_by_name("Sheet11")
     rowCount = sheet.nrows
     global driver
     driver = webdriver.Chrome()

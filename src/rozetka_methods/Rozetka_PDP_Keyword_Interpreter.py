@@ -11,19 +11,19 @@ def filter_method():
     for i in range(1, rowCount):
         keyword = sheet.cell_value(i, 3)
         if (keyword == "enter url"):
-            openApplication(sheet.cell_value(2, 4))
+            openApplication(driver, sheet.cell_value(2, 4))
 
         if (keyword == "move to"):
-            move_to(sheet.cell_value(7, 4))
+            move_to(driver, sheet.cell_value(7, 4))
 
         if (keyword == "click"):
-            if (sheet.cell_value(i, 2) != ""):
+            if (driver, sheet.cell_value(3, 2), sheet.cell_value(i, 2) != ""):
                 time.sleep(3)
-                click(sheet.cell_value(i, 1), sheet.cell_value(i, 2))
+                click(driver, sheet.cell_value(3, 2), sheet.cell_value(i, 1), sheet.cell_value(i, 2))
 
         if (keyword == "get element text"):
             time.sleep(3)
-            element_text = getElementText(sheet.cell_value(i, 1), sheet.cell_value(i, 2))
+            element_text = getElementText(driver, sheet.cell_value(i, 1), sheet.cell_value(i, 2))
             elements_text_list.append(element_text)
 
         if (keyword == "verify parameters"):
@@ -33,4 +33,4 @@ def filter_method():
             assert int(re.sub(r'\D', '', elements_text_list[0])) == int(re.sub(r'\D', '', elements_text_list[2]))
 
         if (keyword == "quit"):
-            closeApplication()
+            closeApplication(driver)
